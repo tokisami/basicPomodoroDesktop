@@ -12,14 +12,32 @@ from tkinter import font
 #Display de la ventana 
 root = tk.Tk()
 root.title("Pomodoro Goat")
-root.geometry("300x400")
 root.resizable(False, False)
 root.configure(bg="#b1fcbb")
+
+#Aca voy a centrar la ventana en la pantalla y darle el size de 300x400
+wtotal = root.winfo_screenwidth()
+htotal = root.winfo_screenheight()
+x = (wtotal // 2) - (300 // 2)
+y = (htotal // 2) - (400 // 2)
+root.geometry(f"300x400+{x}+{y}")
 
 #Texto que de ahi voy a modificar para que aparezca el nombre de la app y el autor
 fuente_minecraft = font.Font(family="Minecraft Default", size=24)
 etiqueta = tk.Label(root, text="Pomodoro Goat", font=fuente_minecraft, fg="black", bg="#b1fcbb")
 etiqueta.pack(pady=35)
+
+#Vamos a intentar colocar ahora las imagenes de pausa y continuar de al medio de de la pantalla y dejare comentado el de continuar mientras
+pausa = tk.PhotoImage(file="pause.png")
+#continuar = tk.PhotoImage(file="continue.png") 
+
+etiqueta = tk.Label(root, image=pausa)
+etiqueta.pack()
+
+#En esta parte siguiendo el orden de la app voy a colocar el temporizador en pantalla y lo voy a centrar
+temporizador = tk.Label(root, text="25:00", font=("Minecraft Default", 48), fg="black", bg="#b1fcbb")
+temporizador.pack(pady=20)
+
 
 #Definir los 3 botones correspondientes a iniciar, pausar y reiniciar el temporizador 
 def timerStart():
